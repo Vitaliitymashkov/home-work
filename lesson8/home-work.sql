@@ -6,7 +6,7 @@
 2. 
 SELECT Customers.City, COUNT(Orders.EmployeeID) as Employees FROM Customers
 INNER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
-GROUP BY City
+GROUP BY Citycd
 ORDER BY Employees DESC
 LIMIT 5 
 3. 
