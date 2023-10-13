@@ -1,25 +1,26 @@
 /// <reference types="cypress" />
 
-describe('sauce demo login tests', () => {
+import LoginPage from "../../pages/loginPage"
+import login from "../../support/commands"
 
-    it('verifies that a user is able to correctly login to the site',()=> {
-        cy.visit('https://www.saucedemo.com/v1/');
-        cy.get('[data-test="username"]').type('standard_user')
-        cy.get('input[type="password"]').type('secret_sauce')
-        cy.get('#login-button').click()
+describe('sauce demo login tests', () => {
+    const loginPage = new LoginPage()
+
+    it.only('verifies that a user is able to correctly login to the site',()=> {
+        loginPage.login("standart_useer", "secret_sauce")
         cy.get('.product_label').should('exist')
     })
 
     it('verifies that a user is NOT able to login with invalid password', ()=> {
-        cy.visit('https://www.saucedemo.com/v1/'); 
+        cy.visit('https://www.saucedemo.com/'); 
         cy.get('[data-test="username"]').type('standard_user')
         cy.get('input[type="password"]').type('sauce')
         cy.get('#login-button').click()
         cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Username and password do not match any user in this service')
     })
 
-    it.only('verifies that a user is able to correctly add an item to the cart',()=> {
-        cy.visit('https://www.saucedemo.com/v1/');
+    it('verifies that a user is able to correctly add an item to the cart',()=> {
+        cy.visit('https://www.saucedemo.com/');
         cy.get('[data-test="username"]').type('standard_user')
         cy.get('input[type="password"]').type('secret_sauce')
         cy.get('#login-button').click()
