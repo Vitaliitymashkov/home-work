@@ -63,7 +63,7 @@ describe('cypress-realworld-app', () => {
     //Wait for the GET request to complete
     cy.wait('@getTransactions').then((interception) => {
       //validate the response
-      expect(interception.response.statusCode).to.eq(200)   
+      expect(interception.response.statusCode).to.eq(200)
     })
   })
 
@@ -170,14 +170,14 @@ describe('cypress-realworld-app', () => {
 
   it('TC2.2 - Display User Setting Form Errors - Ensure that errors are displayed correctly in the user settings form.', function () {
     cy.visit('http://localhost:3000');
-  
+
     cy.intercept('GET', 'http://localhost:3001/user/settings').as('getSettings');
-  
+
     //Log in
     cy.get('#username').type(existingUser.userName)
     cy.get('#password').type(existingUser.password)
     cy.get('.MuiButton-label').click()
-  
+
     //Open User Settings
     cy.get('[data-test="sidenav-user-settings"]').click();
 
@@ -186,13 +186,13 @@ describe('cypress-realworld-app', () => {
 
     cy.get('[data-test="user-settings-lastName-input"]').clear()
     cy.get('#user-settings-lastName-input-helper-text').should('have.text', 'Enter a last name')
-  
+
     cy.get('[data-test="user-settings-email-input"]').clear()
     cy.get('#user-settings-email-input-helper-text').should('have.text', 'Enter an email address')
 
     cy.get('[data-test="user-settings-email-input"]').clear().type('test')
     cy.get('#user-settings-email-input-helper-text').should('have.text', 'Must contain a valid email address')
-    
+
     cy.get('[data-test="user-settings-phoneNumber-input"]').clear()
     cy.get('#user-settings-phoneNumber-input-helper-text').should('have.text', 'Enter a phone number')
 
@@ -201,7 +201,7 @@ describe('cypress-realworld-app', () => {
 
   });
 
-  it.only('TC2.2 - Update User Information - Ensure that user information (first name, last name, email, phone number) can be updated correctly.', function () {
+  it.only('TC2.3 - Update User Information - Ensure that user information (first name, last name, email, phone number) can be updated correctly.', function () {
     cy.visit('http://localhost:3000')
 
     cy.intercept('GET', 'http://localhost:3001/user/settings').as('getSettings')
