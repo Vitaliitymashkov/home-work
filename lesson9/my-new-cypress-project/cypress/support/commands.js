@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import LoginPage from "./pages/loginPage"
+import LoginPage from "../pages/loginPage"
 const loginPage = new LoginPage()
 
 Cypress.Commands.add('login', (username,password)=>{
@@ -33,4 +33,16 @@ Cypress.Commands.add('login', (username,password)=>{
     loginPage.fillUsername(password)
     loginPage.clickLoginButton()
 
+})
+
+Cypress.Commands.add('getBySel', (selector, ...args) => {
+    return cy.get('[data-test=${selector}]', ...args)
+})
+
+Cypress.Commands.add('getBySelLike', (selector, ...args) => {
+    return cy.get('[data-test*=${selector}]', ...args)
+})
+
+Cypress.Commands.add('getByClassLike', (selector, ...args) => {
+    return cy.get('[class*=${selector}]', ...args).first()
 })

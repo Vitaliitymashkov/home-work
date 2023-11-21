@@ -1,10 +1,10 @@
 export default class LoginPage {
-constructor() {
+    constructor() {
 
-}
+    }
 
     visit() {
-        cy.visit('https://www.saucedemo.com/')
+        cy.visit('https://www.saucedemo.com/v1')
     }
 
     fillUsername(username){
