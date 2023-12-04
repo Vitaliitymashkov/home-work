@@ -2,7 +2,7 @@ name: Build NestJS
 
 on:
     pull_request:
-        branches: [ main]
+        branches: [main]
 
 jobs:
     build:
@@ -15,6 +15,7 @@ jobs:
               uses: actions/setup-node@master
               with:
                 node-version: 18
+              cashe: “npm”
             - name: 2 commands
               run: |
                 echo “Hello GitHub action”

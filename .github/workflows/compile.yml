@@ -1,0 +1,21 @@
+name: Compile project
+
+on:
+    pull_request:
+        branches: [main] 
+jobs:
+    compile:
+           name: Compile project
+           runs-on: ubuntu-latest                            
+           steps:
+               - name: Checkout application code
+                 uses: actions/checkout@v3
+               - name: Setup node
+                 uses: actions/setup-node@master
+                 with:
+                   node-version: 18
+                 cashe: “npm”
+               - name: Install Dependencies
+                 run: npm install
+               - name: Compile project
+                 run: npm run compile
