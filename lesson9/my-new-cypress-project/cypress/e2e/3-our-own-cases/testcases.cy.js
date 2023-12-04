@@ -15,7 +15,7 @@ describe('cypress-realworld-app', () => {
 
   it('should allow a visitor to sign up, login and logout', function () {
 
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
     //Sign up
     cy.get('[data-test="signup"]').click()
@@ -50,10 +50,10 @@ describe('cypress-realworld-app', () => {
 
   it('TC1.1-Check Network Request Status - Ensure that the network request status for transactions is 200', function () {
 
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
     //Set up an intercept for the Get request
-    cy.intercept('GET', 'http://localhost:3001/transactions/public').as('getTransactions')
+    cy.intercept('GET', 'http://localhost:3001/transactions/public').cy.wait('getTransactions')
 
     //Log in
     cy.get('#username').type(existingUser.userName)
@@ -68,10 +68,10 @@ describe('cypress-realworld-app', () => {
   })
 
   it('TC1.2-Interact with Elements - Ensure that elements such as checkboxes, radiobuttons, and dropdowns can be interacted with.', function () {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
     //Set up an intercept for the Get request
-    cy.intercept('GET', 'http://localhost:3001/transactions/public').as('getTransactions')
+    cy.intercept('GET', 'http://localhost:3001/transactions/public').cy.wait('getTransactions')
 
     //Log in
     cy.get('#username').type(existingUser.userName)
@@ -100,13 +100,13 @@ describe('cypress-realworld-app', () => {
   })
 
   it('TC1.3 - Render and Paginate All Transaction Feeds - Ensure that the application correctly renders and paginates all transaction feeds.', function () {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
     //Intercept the general request
-    cy.intercept('GET', 'http://localhost:3001/transactions/public').as('getTransactions')
+    cy.intercept('GET', 'http://localhost:3001/transactions/public').cy.wait('getTransactions')
 
     //Set up an intercept for the second page request
-    cy.intercept('GET', 'http://localhost:3001/transactions/public?page=2').as('getTransactionsPage2')
+    cy.intercept('GET', 'http://localhost:3001/transactions/public?page=2').cy.wait('getTransactionsPage2')
 
     //Log in
     cy.get('#username').type(existingUser.userName)
@@ -126,10 +126,10 @@ describe('cypress-realworld-app', () => {
 
 
   it('TC1.4 - Filter Transactions by Date Range - Ensure that transactions can be filtered by a specific date range', function () {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
     //Set up an intercept for the Get request
-    cy.intercept('GET', 'http://localhost:3001/transactions/public').as('getTransactions')
+    cy.intercept('GET', 'http://localhost:3001/transactions/public').cy.wait('getTransactions')
 
     //Log in
     cy.get('#username').type(existingUser.userName)
@@ -149,9 +149,9 @@ describe('cypress-realworld-app', () => {
   })
 
   it('TC2.1 - Render User Settings Form - Ensure the user settings form is rendered correctly.', function () {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
-    cy.intercept('GET', 'http://localhost:3001/user/settings').as('getSettings')
+    cy.intercept('GET', 'http://localhost:3001/user/settings').cy.wait('getSettings')
 
     //Log in
     cy.get('#username').type(existingUser.userName)
@@ -169,9 +169,9 @@ describe('cypress-realworld-app', () => {
   })
 
   it('TC2.2 - Display User Setting Form Errors - Ensure that errors are displayed correctly in the user settings form.', function () {
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
 
-    cy.intercept('GET', 'http://localhost:3001/user/settings').as('getSettings');
+    cy.intercept('GET', 'http://localhost:3001/user/settings').cy.wait('getSettings');
 
     //Log in
     cy.get('#username').type(existingUser.userName)
@@ -202,7 +202,7 @@ describe('cypress-realworld-app', () => {
   });
 
   it.only('TC2.3 - Update User Information - Ensure that user information (first name, last name, email, phone number) can be updated correctly.', function () {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
     cy.intercept('GET', 'http://localhost:3001/user/settings').as('getSettings')
 
@@ -219,6 +219,7 @@ describe('cypress-realworld-app', () => {
     cy.get('[data-test="user-settings-email-input"]').clear().type('newemail@gmail.com')
     cy.get('[data-test="user-settings-phoneNumber-input"]').clear().type('123123123')
 
+    // Save updated User Settings
     cy.get('button.MuiButton-root').click();
   });
 

@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "lesson9/2-my-new-cypress-project-2"
 		}
 	],
 	"settings": {}

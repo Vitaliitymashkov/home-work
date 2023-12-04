@@ -9,8 +9,8 @@ const inventoryPage = new InventoryPage()
 describe('sauce demo login tests', () => {
 
 
-    it('verifies that a user is able to correctly login to the site', () => {
-        loginPage.login("standart_useer", "secret_sauce")
+    it.only('verifies that a user is able to correctly login to the site', () => {
+        loginPage.login("standart_user", "secret_sauce")
         inventoryPage.getPageTitle()
             .should('exist')
             .and('be.visible')
@@ -325,7 +325,7 @@ describe('sauce demo login tests', () => {
 
     //Lecture4-second part
 
-    it.only('Checks backend requests', () => {
+    it('Checks backend requests', () => {
         cy.request('https://jsonplaceholder.cypress.io/comments')
             .should((response) => {
                 expect(response.status).to.eq(200)

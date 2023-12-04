@@ -4,7 +4,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   reporter: 'mochawesome',
-  video: true,
+  //video: true,
  /* reporterOptions: {
     charts: true,
     reportPageTitle: 'custom-title',
@@ -22,6 +22,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    baseUrl: 'http://localhost:3000'
   },
 });
 

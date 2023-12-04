@@ -1,0 +1,51 @@
+207     cy.intercept('GET', 'http://localhost:3001/user/settings').as('getSettings')
+
+Intercept is on another port - 3001.
+Why?
+
+Where is no interception in the test for the "getSettings" call.
+Please consider using this call as cy.wait('getSettings')
+https://docs.cypress.io/api/commands/intercept
+
+Note: the same in all tests with interceptors.
+
+-> Error while running case
+
+205 cy.visit('http://localhost:3000')
+
+Better using cypress base_url parameter
+https://filiphric.com/cypress-basics-using-baseurl
+
+-> done, but there is localhost:3001
+
+204 it.only('TC2.2 - Update User Information - Ensure that user information (first name, last name, email, phone number) can be updated correctly.', function () {
+  Only can be removed when development has been finished. Currently it limits execution only with tests marked with "only".
+
+  -> done
+
+  222 cy.get('button.MuiButton-root').click();
+
+  This last line has no assertions after, so most probably it will not check anything. Please consider adding assertions where needed.
+   
+   -> // Save updated User Settings
+
+   83 /Drag the first thumb to a new position
+
+   Long comments should not stay after finishing development of the test.
+
+   -> Should I delete it?
+
+120 cy.wait('@getTransactionsPage2').then((interception) => {
+
+    Please consider not using naming with numbers - call1, call2, call3. Better to name calls with the metalingual name.
+
+
+-> don't understand where are numbers
+
+123 expect(interception.response.statusCode).to.be.oneOf([200, 304]);
+Redirect here can be leading to any pages - not always it will be correct behavior.
+
+-> ???
+
+
+
