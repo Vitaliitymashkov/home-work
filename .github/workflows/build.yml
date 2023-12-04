@@ -1,0 +1,25 @@
+name: Build NestJS
+
+on:
+    pull_request:
+        branches: [ main]  // or [ main , develop, feature/* ]
+
+jobs:
+    build:
+        name: Build NestJS using package.json
+        runs-on: ubuntu-latest                          
+        steps:
+            - name: Checkout application code
+              uses: actions/checkout@v3
+            - name: Setup node
+              uses: actions/setup-node@master
+              with:
+                node-version: 18
+            - name: 2 commands
+              run: |
+                echo “Hello GitHub action”
+                echo “We do additional task”
+            - name: Install Dependencies
+              run: npm install
+            - name: Build application
+              run: npm run build
