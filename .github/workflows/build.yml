@@ -2,7 +2,7 @@ name: Build NestJS
 
 on:
     pull_request:
-        branches: [ main]  // or [ main , develop, feature/* ]
+        branches: [ main]
 
 jobs:
     build:
