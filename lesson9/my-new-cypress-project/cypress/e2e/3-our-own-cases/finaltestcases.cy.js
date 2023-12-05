@@ -20,7 +20,7 @@ describe('Sauce demo tests', () => {
     // Click the 'Login' button
     cy.get('#login-button').click();
 
-    // Verify that 'Logout' is available in the side
+    // Verify that 'Logout' is available in the sidebar
     cy.get('#react-burger-menu-btn').click();
     cy.get('#logout_sidebar_link').should('be.visible');
   })
@@ -91,7 +91,7 @@ describe('Sauce demo tests', () => {
     cy.wait(5000);
     cy.intercept('GET', 'https://www.saucedemo.com/inventory.html');
 
-    // Verify that 'Logout' is available in the side
+    // Verify that 'Logout' is available in the sidebar
     cy.get('#react-burger-menu-btn').click();
     cy.get('#logout_sidebar_link').should('be.visible');
 
@@ -168,7 +168,7 @@ describe('Sauce demo tests', () => {
     // Click the 'Login' button
     cy.get('#login-button').click();
 
-    // Verify that 'Logout' is available in the side
+    // Verify that 'Logout' is available in the sidebar
     cy.get('#react-burger-menu-btn').click();
     cy.get('#logout_sidebar_link').should('be.visible');
   })
