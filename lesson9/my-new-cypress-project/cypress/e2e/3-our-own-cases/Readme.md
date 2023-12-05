@@ -65,6 +65,8 @@ Modify the Cypress configuration to use the JUnit reporter:
 Run your tests again and look for the JUnit report file.
 
      npx cypress run // Command to run tests
+     npx cypress run --spec "cypress/e2e/3-our-own-cases/finaltestcases.cy.js" //Command to run tests for specific file
+
 
 Open "test-results.xml" file for results
 
