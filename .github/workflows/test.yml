@@ -15,9 +15,12 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 18
-        cashe: “npm”
-    - name: Install Dependencies
-      run: npm install
-    - name: Run Cypress test
+        cashe: “npm"
+    - name: Install dependencies    
       run: |
+        cd lesson9/my-new-cypress-project/
+        npm install
+    - name: Run Cypress.io tests
+      run: |
+        cd lesson9/my-new-cypress-project/
         npx cypress run
