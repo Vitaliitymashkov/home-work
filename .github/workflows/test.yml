@@ -24,3 +24,9 @@ jobs:
       run: |
         cd lesson9/my-new-cypress-project/
         npx cypress run --spec "cypress/e2e/3-our-own-cases/finaltestcases.cy.js"
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: summary
+        path: ./lesson9/my-new-cypress-project/cypress/screenshots/
+        retention-days: 30
