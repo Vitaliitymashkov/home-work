@@ -18,7 +18,6 @@ jobs:
         cashe: “npm”
     - name: Install Dependencies
       run: npm install
-    - name: Run Jest tests
+    - name: Run Cypress test
       run: |
-        npm run test:cov
-        npm run test:e2e
+        npx cypress run
