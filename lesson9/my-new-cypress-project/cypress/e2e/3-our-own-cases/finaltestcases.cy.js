@@ -88,7 +88,7 @@ describe('Sauce demo tests', () => {
 
     // Click the 'Login' button
     cy.get('#login-button').click();
-    cy.wait(5000);
+    cy.wait(10000);
     cy.intercept('GET', 'https://www.saucedemo.com/inventory.html');
 
     // Verify that 'Logout' is available in the sidebar
