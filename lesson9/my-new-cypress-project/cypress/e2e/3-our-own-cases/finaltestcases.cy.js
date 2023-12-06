@@ -77,7 +77,7 @@ describe('Sauce demo tests', () => {
     cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Sorry, this user has been locked out.')
   })
 
-  it('Check that a valid user can login with the valid credentials, but with timeout.', function () {
+  it.only('Check that a valid user can login with the valid credentials, but with timeout.', function () {
 
     // Open Sauce Demo login page
     cy.visit('https://www.saucedemo.com/');

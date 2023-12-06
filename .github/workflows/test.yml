@@ -23,7 +23,7 @@ jobs:
     - name: Run Cypress.io tests
       run: |
         cd lesson9/my-new-cypress-project/
-        npx cypress run --spec "cypress/e2e/3-our-own-cases/finaltestcases.cy.js"
+        npx cypress run --spec "cypress/e2e/3-our-own-cases/finaltestcases.cy.js" --env "TASK_TITLE=Run final tests"
     - uses: actions/upload-artifact@v3
       if: always()
       with:
