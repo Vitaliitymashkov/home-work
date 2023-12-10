@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 18
-        cashe: “npm"
+        cache: “npm"
     - name: Install dependencies    
       run: |
         cd lesson9/my-new-cypress-project/
@@ -28,5 +28,5 @@ jobs:
       if: always()
       with:
         name: summary
-        path: ./cypress/screenshots/
+        path: .
         retention-days: 30
